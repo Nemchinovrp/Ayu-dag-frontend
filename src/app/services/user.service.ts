@@ -1,6 +1,10 @@
+// @ts-ignore
 import {Injectable} from '@angular/core';
+// @ts-ignore
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+// @ts-ignore
 import {BehaviorSubject, Observable} from 'rxjs';
+// @ts-ignore
 import {map} from 'rxjs/operators';
 import {User} from '../model/user';
 import {Transaction} from '../model/transaction';
