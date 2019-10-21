@@ -1,0 +1,140 @@
+<div class="container custom-container">
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    <strong>Error!</strong> {{errorMessage}}
+    <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div *ngIf="infoMessage" class="alert alert-success">
+    <strong>Successful!</strong> {{infoMessage}}
+    <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div *ngIf="dataSource">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col col-xs-6">
+            <h3 class="panel-title">All Users</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <table [dataSource]="dataSource" mat-table matSort>
+          <ng-container matColumnDef="id">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>User Id</th>
+            <td *matCellDef="let element" mat-cell>{{element.id}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>Full Name</th>
+            <td *matCellDef="let element" mat-cell>{{element.name}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="username">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>Username</th>
+            <td *matCellDef="let element" mat-cell>{{element.username}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>Actions</th>
+            <td *matCellDef="let element" mat-cell style="width:140px;">
+              <a (click)="editUserRequest(element)" class="btn btn-warning custom-btn-link"><em
+                class="glyphicon glyphicon-pencil"></em></a>
+              <a (click)="deleteUserRequest(element)" class="btn btn-danger custom-btn-link"><em
+                class="glyphicon glyphicon-trash"></em></a>
+            </td>
+          </ng-container>
+
+          <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div #userModal aria-hidden="true" aria-labelledby="userModalLabel" class="modal fade" id="userModal" role="dialog"
+     tabIndex="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <form #f="ngForm" (ngSubmit)="f.form.valid && editUser()" name="form-user-update" novalidate>
+        <div class="modal-header">
+          <h5 class="modal-title">User Details</h5>
+          <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
+            aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="errorMessage" class="alert alert-danger">
+            <strong>Error!</strong> {{errorMessage}}
+            <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div [ngClass]="{ 'has-error': f.submitted && !name.valid }" class="form-group">
+            <label for="name">Full Name</label>
+            <input #name="ngModel" [(ngModel)]="selectedUser.name" class="form-control input-text-custom" id="name"
+                   name="name" required type="text"/>
+            <div *ngIf="f.submitted && !name.valid" class="help-block">An valid name is required.</div>
+          </div>
+          <div [ngClass]="{ 'has-error': f.submitted && !username.valid }" class="form-group">
+            <label for="username">Username</label>
+            <input #username="ngModel" [(ngModel)]="selectedUser.username" class="form-control input-text-custom"
+                   id="username"
+                   name="username" required type="text"/>
+            <div *ngIf="f.submitted && !username.valid" class="help-block">An valid username is required.</div>
+          </div>
+
+          <div [ngClass]="{ 'has-error': f.submitted && !password.valid }" class="form-group">
+            <label for="password">Password</label>
+            <input #password="ngModel" [(ngModel)]="selectedUser.password" class="form-control input-text-custom"
+                   id="password" name="password"
+                   readonly required type="password"/>
+            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required.</div>
+          </div>
+
+          <div [ngClass]="{ 'has-error': f.submitted && !role.valid }" class="form-group">
+            <label for="role">User Role</label>
+            <select #role="ngModel" [(ngModel)]="selectedUser.role" class="form-control" id="role" name="role" required>
+              <option value="ADMIN">ADMIN</option>
+              <option value="USER">USER</option>
+            </select>
+            <div *ngIf="f.submitted && !role.valid" class="help-block">Role is required.</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+          <button class="btn btn-primary" type="submit">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div #deleteModal aria-hidden="true" aria-labelledby="deleteModalLabel" class="modal fade" id="deleteModal"
+     role="dialog"
+     tabIndex="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmation</h5>
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span
+          aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        Are you sure to delete <strong>{{selectedUser.name}}</strong>?
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancel</button>
+        <button (click)="deleteUser()" class="btn btn-danger" type="button">I'm sure.</button>
+      </div>
+    </div>
+  </div>
+</div>

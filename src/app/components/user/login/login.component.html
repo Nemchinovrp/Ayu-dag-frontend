@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="card card-container">
+    <img class="profile-img-card" id="profile-img" src="//img.icons8.com/cotton/64/000000/gender-neutral-user--v3.png"/>
+
+    <form #f="ngForm" (ngSubmit)="f.form.valid && login()" name="form-signin" novalidate>
+      <div *ngIf="errorMessage" class="alert alert-danger" role="alert">{{errorMessage}}</div>
+      <div [ngClass]="{ 'has-error': f.submitted && !username.valid }" class="form-group">
+        <label for="username">Username</label>
+        <input #username="ngModel" [(ngModel)]="user.username" class="form-control input-text-custom" id="username"
+               name="username" required type="text"/>
+        <div *ngIf="f.submitted && !username.valid" class="help-block">An valid username is required.</div>
+      </div>
+      <div [ngClass]="{ 'has-error': f.submitted && !password.valid }" class="form-group">
+        <label for="password">Password</label>
+        <input #password="ngModel" [(ngModel)]="user.password" class="form-control input-text-custom" id="password"
+               name="password" required type="password"/>
+        <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required.</div>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block btn-signin form-submit-button" type="submit">Sign In</button>
+    </form><!-- /form -->
+    <a [routerLink]="['/register']" class="btn btn-link">Create New Account!</a>
+  </div><!-- /card-container -->
+</div><!-- /container -->

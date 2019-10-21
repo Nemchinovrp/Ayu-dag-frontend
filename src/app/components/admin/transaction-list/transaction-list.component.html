@@ -1,0 +1,36 @@
+<div class="container custom-container">
+  <div *ngIf="dataSource">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col col-xs-6">
+            <h3 class="panel-title">All Transactions</h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <table [dataSource]="dataSource" mat-table matSort>
+          <ng-container matColumnDef="id">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>Transaction Id</th>
+            <td *matCellDef="let element" mat-cell>{{element.id}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="user">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>User Name</th>
+            <td *matCellDef="let element" mat-cell>{{element.user.name}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="product">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>Product Name</th>
+            <td *matCellDef="let element" mat-cell>{{element.product.name}}</td>
+          </ng-container>
+
+          <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

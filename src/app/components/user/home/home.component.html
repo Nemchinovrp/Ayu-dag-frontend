@@ -1,0 +1,32 @@
+<div class="container">
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    <strong>Error!</strong> {{errorMessage}}
+  </div>
+  <div *ngIf="infoMessage" class="alert alert-success">
+    <strong>Successful!</strong> {{infoMessage}}
+  </div>
+  <div class="product-container">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col col-xs-6">
+            <h3 class="panel-title">All Products</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-deck">
+      <div *ngFor="let item of obs | async" class="card" style="width: 18rem;">
+        <div class="custom-brand"><span class="glyphicon glyphicon-tag"></span></div>
+        <div class="card-body">
+          <h5 class="card-title">{{item.name}}</h5>
+          <p class="card-text">{{item.explanation}}</p>
+          <a (click)="purchaseProduct(item)" class="btn btn-primary btn-custom-link">Purchase</a>
+          <a (click)="detail(item)" class="btn btn-secondary btn-custom-link">Detail</a>
+        </div>
+      </div>
+    </div>
+    <mat-paginator [pageSizeOptions]="[5, 20, 50]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

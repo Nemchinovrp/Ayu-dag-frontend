@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-header card-header-warning">
+    <h4 class="card-title">Список задач</h4>
+  </div>
+  <div class="card-body table-responsive">
+    <table class="table table-hover">
+      <thead class="text-warning">
+      <th>ID</th>
+      <th>Название</th>
+      <th>Категория</th>
+      <th>Приоритет</th>
+      <th>Дата</th>
+      <th>Статус</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let task of tasks; let i = index">
+        <td>{{i+1}}</td>
+        <td>{{task.title}}</td>
+        <td>{{task.category ? task.category.title : 'Отсутствует категория'}}</td>
+        <td>{{task.priority ? task.priority.title : 'Без приоритета'}}</td>
+        <td>{{task.date ? (task.date | date) : 'Без даты'}}</td>
+        <td>{{task.completed}}</td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

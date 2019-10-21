@@ -1,0 +1,43 @@
+<body class="">
+<div class="wrapper ">
+  <app-categories></app-categories>
+  <div class="main-panel">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+      <div class="container-fluid">
+        <div class="navbar-wrapper">
+          <a class="navbar-brand" href="#pablo">Angular</a>
+        </div>
+        <button aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                data-toggle="collapse" type="button">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end">
+          <form class="navbar-form">
+            <div class="input-group no-border">
+              <input class="form-control" placeholder="Search..." type="text" value="">
+              <button class="btn btn-white btn-round btn-just-icon" type="submit">
+                <i class="material-icons">search</i>
+                <div class="ripple-container"></div>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <app-view-tasks></app-view-tasks>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
