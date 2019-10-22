@@ -1,0 +1,9 @@
+
+
+.image{
+  height:50em;
+  background-size:cover;
+  width:auto;
+  background-image:url('/assets/image/3.jpeg');
+  background-position:50% 50%;
+}
