@@ -1,31 +1,31 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: ayu_dag_frontend-service
+  name: ayu-dag-frontend-service
 spec:
   selector:
-    app: ayu_dag_frontend
+    app: ayu-dag-frontend
   type: NodePort
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 80
+      targetPort: 80
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: example-ayu_dag_frontend
+  name: example-ayu-dag-frontend
   labels:
-    app: ayu_dag_frontend
+    app: ayu-dag-frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ayu_dag_frontend
+      app: ayu-dag-frontend
   template:
     metadata:
       labels:
-        app: ayu_dag_frontend
+        app: ayu-dag-frontend
     spec:
       imagePullSecrets:
         - name: pipeline-docker-registry
@@ -33,4 +33,4 @@ spec:
         - name: maven
           image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
           ports:
-            - containerPort: 8080
+            - containerPort: 80
