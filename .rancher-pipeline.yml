@@ -2,7 +2,7 @@ stages:
   - name: Install
       steps:
       - runScriptConfig:
-            image: node:8.17.0-alpine3.10
+            image: node:lts-alpine3.9
             shellScript: |-
               npm install
 
