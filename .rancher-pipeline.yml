@@ -1,7 +1,15 @@
 stages:
+  - name: Install
+      steps:
+          - runScriptConfig:
+            image: pivotalpa/angular-cli:latest
+            shellScript: |-
+              npm install
+
   - name: Build
     steps:
       - runScriptConfig:
           image: pivotalpa/angular-cli:latest
           shellScript: |-
             ng build --prod
+
