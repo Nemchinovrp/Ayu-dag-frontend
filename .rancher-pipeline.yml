@@ -18,4 +18,4 @@ stages:
       - publishImageConfig:
             dockerfilePath: ./Dockerfile
             buildContext: .
-            tag: ayu_dag-frontend:1.1.1
+            tag: ayu_dag_frontend:1.1.1
