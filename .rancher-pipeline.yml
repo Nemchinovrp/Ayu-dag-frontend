@@ -1,6 +1,6 @@
 stages:
-  - name: Install
-      steps:
+  - name: First
+    steps:
       - runScriptConfig:
             image: node:lts-alpine3.9
             shellScript: |-
