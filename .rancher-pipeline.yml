@@ -2,6 +2,6 @@ stages:
   - name: Build
     steps:
       - runScriptConfig:
-          image: pivotalpa/angular-cli:1.4.2
+          image: pivotalpa/angular-cli:latest
           shellScript: |-
             ng build --prod
