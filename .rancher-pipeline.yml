@@ -12,8 +12,9 @@ stages:
           image: pivotalpa/angular-cli:latest
           shellScript: |-
             ng build --prod
+
   - name: Publish
-      steps:
+    steps:
       - publishImageConfig:
             dockerfilePath: ./Dockerfile
             buildContext: .
