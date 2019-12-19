@@ -18,4 +18,9 @@ stages:
       - publishImageConfig:
             dockerfilePath: ./Dockerfile
             buildContext: .
-            tag: ayu_dag_frontend:1.1.1
+            tag: ayu_dag_frontend:${CICD_EXECUTION_SEQUENCE}
+
+  - name: Deploy
+    steps:
+      - applyYamlConfig:
+            path: ./deployment.yaml
