@@ -34,4 +34,6 @@ spec:
           image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
           ports:
             - containerPort: 80
-            - hostPort: 80
+              hostPort: 80
+              name: 80tcp80
+              protocol: TCP
