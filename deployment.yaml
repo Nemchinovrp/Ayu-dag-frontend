@@ -36,5 +36,5 @@ spec:
           ports:
             - containerPort: 80
               hostPort: 4200
-              name: 80tcp4200
+              name: 80tcpip4200
               protocol: TCP
