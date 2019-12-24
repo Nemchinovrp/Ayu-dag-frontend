@@ -18,11 +18,11 @@ import {UnathorizedComponent} from './components/error/unathorized/unathorized.c
 
 import {
   MatButtonModule,
-  MatCardModule,
+  MatCardModule, MatDatepickerModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatListModule,
+  MatListModule, MatNativeDateModule,
   MatPaginatorModule,
   MatProgressBarModule,
   MatSelectModule,
