@@ -36,3 +36,10 @@ stages:
     steps:
       - applyYamlConfig:
             path: ./deployment.yaml
+# branch conditions for the pipeline
+branch:
+  include: [ master ]
+  exclude: [ dev ]
+
+
+
