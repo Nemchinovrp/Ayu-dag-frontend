@@ -1,5 +1,8 @@
 stages:
   - name: Install
+    when:
+      branch: master
+      event: [ push ]
     steps:
       - runScriptConfig:
             image: node:lts-alpine3.9
@@ -7,6 +10,9 @@ stages:
               npm install
 
   - name: Build
+    when:
+      branch: master
+      event: [ push ]
     steps:
       - runScriptConfig:
           image: pivotalpa/angular-cli:latest
@@ -14,6 +20,9 @@ stages:
             ng build --prod
 
   - name: Publish
+    when:
+      branch: master
+      event: [ push ]
     steps:
       - publishImageConfig:
             dockerfilePath: ./Dockerfile
@@ -21,6 +30,9 @@ stages:
             tag: ayu_dag_frontend:${CICD_EXECUTION_SEQUENCE}
 
   - name: Deploy
+    when:
+      branch: master
+      event: [ push ]
     steps:
       - applyYamlConfig:
             path: ./deployment.yaml
