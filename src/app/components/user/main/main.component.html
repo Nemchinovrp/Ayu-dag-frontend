@@ -5,20 +5,29 @@
     </div>
     <div class="col-sm-8">
       <div [style.text-align]="'center'">
-        <mat-checkbox>Check me!</mat-checkbox>
         <mat-card>Бронирование</mat-card>
-
-          <br>
-            <mat-form-field>
-              <input matInput [matDatepicker]="picker" placeholder="Date before">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-            <mat-form-field>
-              <input matInput [matDatepicker]="picker2" placeholder="Date after">
-              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-              <mat-datepicker #picker2></mat-datepicker>
-            </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Дата заезда">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker2" placeholder="Дата выезда">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        <br>
+        <mat-card>Количество человек</mat-card>
+        <mat-card>Счетчик</mat-card>
+        <mat-form-field>
+          <mat-label>Город размещения</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
     </div>
     <div class="col-sm-2">
