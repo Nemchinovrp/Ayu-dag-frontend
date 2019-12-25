@@ -43,6 +43,8 @@ import { ChartComponent } from './components/user/chart/chart.component';
 import { MapsComponent } from './components/user/maps/maps.component';
 import {AgmCoreModule} from '@agm/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatChipsModule} from '@angular/material/chips';
+// import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -89,6 +91,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatChipsModule,
+    MatButtonModule,
     AgmCoreModule.forRoot({
       apiKey: ''
     })

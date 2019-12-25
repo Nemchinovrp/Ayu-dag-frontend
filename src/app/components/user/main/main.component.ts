@@ -16,11 +16,17 @@ export class MainComponent implements OnInit {
     {value: 'pizza-1', viewValue: 'Севастополь'},
     {value: 'tacos-2', viewValue: 'Симферополь'}
   ];
+  inputs: any;
+
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  numberInput(evt, val) {
+    console.log(evt, val);
   }
 
 }

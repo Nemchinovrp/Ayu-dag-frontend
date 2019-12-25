@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-2">
-      One of three columns
+
     </div>
     <div class="col-sm-8">
       <div [style.text-align]="'center'">
@@ -18,8 +18,19 @@
           <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
         <br>
-        <mat-card>Количество человек</mat-card>
-        <mat-card>Счетчик</mat-card>
+        <h4>Количество человек</h4>
+        <form class="example-form">
+          <button mat-button>
+            <mat-icon>exposure_neg_1</mat-icon>
+          </button>
+          <mat-form-field style="width:15px">
+            <input matInput value="0"  type="number" size="1">
+          </mat-form-field>
+          <button mat-button>
+            <mat-icon>exposure_plus_1</mat-icon>
+          </button>
+        </form>
+
         <mat-form-field>
           <mat-label>Город размещения</mat-label>
           <mat-select>
@@ -28,10 +39,12 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+        <br>
+        <button mat-button color="primary">Найти</button>
       </div>
     </div>
     <div class="col-sm-2">
-      One of three columns
+
     </div>
   </div>
 </div>
