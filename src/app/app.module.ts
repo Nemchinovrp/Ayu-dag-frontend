@@ -17,12 +17,13 @@ import {NotFoundComponent} from './components/error/not-found/not-found.componen
 import {UnathorizedComponent} from './components/error/unathorized/unathorized.component';
 
 import {
+  MAT_CHECKBOX_CLICK_ACTION,
   MatButtonModule,
-  MatCardModule,
+  MatCardModule, MatDatepickerModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatListModule,
+  MatListModule, MatNativeDateModule,
   MatPaginatorModule,
   MatProgressBarModule,
   MatSelectModule,
@@ -41,8 +42,9 @@ import { ViewTasksComponent } from './components/user/view-tasks/view-tasks.comp
 import { ChartComponent } from './components/user/chart/chart.component';
 import { MapsComponent } from './components/user/maps/maps.component';
 import {AgmCoreModule} from '@agm/core';
-
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatChipsModule} from '@angular/material/chips';
+// import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -86,11 +88,16 @@ import {AgmCoreModule} from '@agm/core';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatChipsModule,
+    MatButtonModule,
     AgmCoreModule.forRoot({
       apiKey: ''
     })
   ],
-  providers: [],
+  providers: [  {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

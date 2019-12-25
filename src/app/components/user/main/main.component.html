@@ -1,14 +1,52 @@
-<!--<img src="assets/image/3.jpeg" width="1700" height="1300">-->
-<!--
-<div class="bg"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2">
 
-<p class="py-5 text-center">This example creates a full page background image. Try to resize the browser
-  window to see
-  how it always will cover the full screen (when scrolled to top), and that it scales nicely on all screen
-  sizes.</p>
--->
+    </div>
+    <div class="col-sm-8">
+      <div [style.text-align]="'center'">
+        <mat-card>Бронирование</mat-card>
+        <br>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Дата заезда">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker2" placeholder="Дата выезда">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        <br>
+        <h4>Количество человек</h4>
+        <form class="example-form">
+          <button mat-button>
+            <mat-icon>exposure_neg_1</mat-icon>
+          </button>
+          <mat-form-field style="width:15px">
+            <input matInput value="0"  type="number" size="1">
+          </mat-form-field>
+          <button mat-button>
+            <mat-icon>exposure_plus_1</mat-icon>
+          </button>
+        </form>
 
+        <mat-form-field>
+          <mat-label>Город размещения</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{food.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <button mat-button color="primary">Найти</button>
+      </div>
+    </div>
+    <div class="col-sm-2">
 
-<div class="image">
-  Your content
+    </div>
+  </div>
 </div>
+
+
