@@ -1,5 +1,5 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
-//
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+
 import {DadataService, DadataType} from '../../../services/dadata.service';
 import {DadataSuggestion} from '../../../model/dadata/suggestion';
 import {Subject, timer} from 'rxjs';
@@ -13,7 +13,7 @@ import {debounce} from 'rxjs/operators';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
-  private v: any = '';
+  private value: any = '';
   data: DadataSuggestion[] = [];
   currentFocus = -1;
   @Input() disabled = null;
@@ -22,26 +22,13 @@ export class TasksComponent implements OnInit {
   @Input() config: DadataConfig = DadataConfigDefault;
   @Output() selectedSuggestion: DadataSuggestion;
   @Output() selected: EventEmitter<DadataSuggestion> = new EventEmitter<DadataSuggestion>();
-  propagateChange: any = () => {
-  };
-
+  propagateChange: any = () => {};
   // @ts-ignore
   @ViewChild('inputValue', {static: true}) inputValue: ElementRef;
 
   public inputString$ = new Subject<string>();
 
-  constructor(private dataService: DadataService, private r: Renderer2) {
-  }
-
-  get value(): any {
-    return this.v;
-  }
-
-  set value(v: any) {
-    if (v !== this.v) {
-      this.v = v;
-      this.propagateChange(v);
-    }
+  constructor(private dataService: DadataService) {
   }
 
   getData(value: string) {
