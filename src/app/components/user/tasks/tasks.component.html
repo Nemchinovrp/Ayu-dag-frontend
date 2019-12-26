@@ -3,25 +3,28 @@
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
       <div [style.text-align]="'center'">
+        <form class="example-form">
+          <div class="autocomplete">
 
+            <mat-form-field class="example-full-width">
 
-        <div class="autocomplete">
-          <input type="text" name="address" class="search" #inputValue
-                 (input)="getData(inputValue.value)"
-                 (keyup.Enter)="onEnter()" [(ngModel)]="value"/>
+              <input matInput type="text" name="address" class="search" #inputValue
+                     (input)="getData(inputValue.value)"
+                     (keyup.Enter)="onEnter()" [(ngModel)]="value">
 
-          <div *ngIf="data.length">
-            <div class="autocomplete-items">
-              <div class="autocomplele-item" *ngFor="let item of data; let i = index"
-                   (click)="onClick($event, item)" [id]="i+'item'">
-                {{item.value}}
+            </mat-form-field>
+
+            <div *ngIf="data.length">
+              <div class="autocomplete-items">
+                <div class="autocomplele-item" *ngFor="let item of data; let i = index"
+                     (click)="onClick($event, item)" [id]="i+'item'">
+                  {{item.value}}
+                </div>
               </div>
             </div>
+
           </div>
-
-
-
-        </div>
+        </form>
       </div>
     </div>
     <div class="col-sm-2"></div>
