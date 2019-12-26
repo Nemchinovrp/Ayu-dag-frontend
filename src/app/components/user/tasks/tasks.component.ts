@@ -1,4 +1,16 @@
-import {Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, Renderer2, SimpleChanges, ViewChild} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  Renderer2,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
 //
 import {DadataService, DadataType} from '../../../services/dadata.service';
 import {DadataSuggestion} from '../../../model/dadata/suggestion';
@@ -7,6 +19,7 @@ import {Subject, timer} from 'rxjs';
 import {DadataConfig, DadataConfigDefault} from '../../../model/dadata/dadata-config';
 import {DadataResponse} from '../../../model/dadata/dadata-response';
 import {debounce} from 'rxjs/operators';
+import {DadataAddress} from '../../../model/dadata/data';
 
 @Component({
   selector: 'app-tasks',
@@ -27,6 +40,7 @@ export class TasksComponent implements OnInit, ControlValueAccessor, OnChanges {
 
   // @ts-ignore
   @ViewChild('inputValue', { static: true }) inputValue: ElementRef;
+  onTouched = () => {};
 
   public inputString$ = new Subject<string>();
 
@@ -45,6 +59,7 @@ export class TasksComponent implements OnInit, ControlValueAccessor, OnChanges {
   }
 
   getData(value: string) {
+    console.log(value);
     this.inputString$.next(value);
     this.currentFocus = -1;
   }
@@ -65,6 +80,7 @@ export class TasksComponent implements OnInit, ControlValueAccessor, OnChanges {
   }
 
   onEnter() {
+    console.log('onEnter', this.selectedSuggestion, this.data[this.currentFocus]);
     this.selectedSuggestion = this.data[this.currentFocus];
     this.inputValue.nativeElement.value = this.selectedSuggestion.value;
     this.data = [];
@@ -120,16 +136,29 @@ export class TasksComponent implements OnInit, ControlValueAccessor, OnChanges {
     ).subscribe(x => {
       this.dataService.getData(x).subscribe((y: DadataResponse) => {
         this.data = y.suggestions;
+        console.log('ngOnInit - data', this.data);
+        console.log('ngOnInit - DataResponse', y);
+        console.log('ngOnInit - y.suggestions', y.suggestions);
       });
     });
   }
 
   registerOnChange(fn: any): void {
+    this.propagateChange = fn;
   }
 
   registerOnTouched(fn: any): void {
+    this.onTouched = fn;
   }
 
-  writeValue(obj: any): void {
+  writeValue(value: any): void {
+    if (value !== undefined) {
+      this.v = value;
+    }
+  }
+
+  @HostListener('document:click')
+  onOutsideClick() {
+    this.data = [];
   }
 }

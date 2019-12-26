@@ -4,16 +4,16 @@
     <div class="col-sm-8">
       <div [style.text-align]="'center'">
 
-        <form class="example-form">
+      <!--  <form class="example-form">
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Введите адрес">
           </mat-form-field>
-        </form>
+        </form>-->
 
 
         <div class="autocomplete">
-          <input [disabled]="disabled  ? true : null" type="text" name="address" class="search" #inputValue (input)="getData(inputValue.value)"
-                 [placeholder]="placeholder" (keyup.ArrowDown)="onArrowDown()" (keyup.ArrowUp)="onArrowUp()"
+          <input type="text" name="address" class="search" #inputValue (input)="getData(inputValue.value)"
+                 (keyup.ArrowDown)="onArrowDown()" (keyup.ArrowUp)="onArrowUp()"
                  (keyup.Enter)="onEnter()" spellcheck="false" [(ngModel)]="value" autocomplete="new-password" />
           <div *ngIf="data.length">
             <div class="autocomplete-items">
@@ -28,7 +28,7 @@
           </div>
         </div>
 
-        
+
       </div>
     </div>
     <div class="col-sm-2"></div>
