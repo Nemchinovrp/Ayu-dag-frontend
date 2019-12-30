@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {DadataResponse} from '../model/dadata/dadata-response';
+import {DadataAddressResponse} from '../model/dadata/dadata-response';
 import {Locations} from '../model/dadata/dadata-config';
 
 export enum DadataType {
-  fio = 'fio',
-  address = 'address',
-  party = 'party',
-  bank = 'bank',
-  email = 'email'
+  address = 'address'
 }
 
 @Injectable({
@@ -19,7 +15,7 @@ export class DadataService {
   // return this.http.get('http://localhost:8080/address?query='.concat(value));
   constructor(private http: HttpClient) { }
   // tslint:disable-next-line:max-line-length
-  getData(value: string, type: DadataType, count: number = 3, locations: Locations[] = null): Observable<DadataResponse> {
+  getData(value: string, type: DadataType, count: number = 3, locations: Locations[] = null): Observable<DadataAddressResponse> {
     const httpOptions = {
       headers: new HttpHeaders({
         Accept: 'application/json',
@@ -28,6 +24,6 @@ export class DadataService {
       })
     };
     const body = Object.assign({query: value, count, locations});
-    return this.http.post<DadataResponse>('https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/' + type, body, httpOptions);
+    return this.http.post<DadataAddressResponse>('https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/' + type, body, httpOptions);
   }
 }

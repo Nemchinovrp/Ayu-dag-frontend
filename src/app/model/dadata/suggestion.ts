@@ -1,7 +1,7 @@
-import {DadataAddress, DadataBank, DadataEmail, DadataFIO, DadataParty} from './data';
+import {DadataAddress} from './data';
 
-export interface DadataSuggestion {
+export interface DadataAddressSuggestion {
   value: string;
   unrestricted_value: string;
-  data: DadataAddress | DadataFIO | DadataParty | DadataBank | DadataEmail;
+  data: DadataAddress;
 }
