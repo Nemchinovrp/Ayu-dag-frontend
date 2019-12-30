@@ -11,7 +11,6 @@
               <input matInput type="text" name="address" class="search" #inputValue
                      (input)="getData(inputValue.value)"
                      (keyup.Enter)="onEnter()" [(ngModel)]="value">
-
             </mat-form-field>
 
             <div *ngIf="data.length">
