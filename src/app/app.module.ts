@@ -45,6 +45,7 @@ import {AgmCoreModule} from '@agm/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
 // import {MatButtonModule} from '@angular/material/button';
+import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 
 @NgModule({
   declarations: [
@@ -93,8 +94,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatNativeDateModule,
     MatChipsModule,
     MatButtonModule,
-    AgmCoreModule.forRoot({
-      apiKey: ''
+    NgxMapboxGLModule.withConfig({
+      accessToken: 'pk.eyJ1IjoibmVtY2hpbm92cnAiLCJhIjoiY2s0Y3BxN3hpMDdyYzNmbzF6aTBncWxrZSJ9.u1EodAFxMUhql8V9S2o_zw'
     })
   ],
   providers: [  {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'}],

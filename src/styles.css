@@ -2,3 +2,5 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "assets/css/material-dashboard.css";
+@import "~mapbox-gl/dist/mapbox-gl.css";
+@import "~@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css";
