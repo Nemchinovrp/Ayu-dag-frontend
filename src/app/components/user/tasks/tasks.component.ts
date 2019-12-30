@@ -13,12 +13,19 @@ import {debounce} from 'rxjs/operators';
 })
 export class TasksComponent implements OnInit {
   private value: any = '';
+  private valueFio: any = '';
   data: DadataSuggestion[] = [];
+  dataFio: DadataSuggestion[] = [];
   private address: DadataSuggestion = null;
+  private fio: DadataSuggestion = null;
   currentFocus = -1;
+  currentFocusFio = -1;
   @Output() selectedSuggestion: DadataSuggestion;
+  @Output() selectedSuggestionFio: DadataSuggestion;
   // @ts-ignore
   @ViewChild('inputValue', {static: true}) inputValue: ElementRef;
+  // @ts-ignore
+  @ViewChild('inputValueFio', {static: true}) inputValueFio: ElementRef;
   public inputString$ = new Subject<string>();
   public inputStringFio$ = new Subject<string>();
 
@@ -26,26 +33,34 @@ export class TasksComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('ngOnInit working');
     this.getAddress();
     this.getFio();
   }
   getData(value: string) {
-    console.log('getData Method - ', value);
     this.inputString$.next(value);
     this.currentFocus = -1;
   }
+  getDataFio(value: string) {
+    this.inputStringFio$.next(value);
+    this.currentFocusFio = -1;
+  }
 
   onClick(e: MouseEvent, item: DadataSuggestion) {
-    console.log('onClick Start', e);
     this.inputValue.nativeElement.value = item.value;
     this.inputValue.nativeElement.focus();
     this.selectedSuggestion = item;
     this.data = [];
     this.currentFocus = -1;
     this.address = item;
-    console.log('OnClick - this.address', this.address);
-    // console.log('onClick DadataSuggestion', item);
+  }
+
+  onClickFio(e: MouseEvent, item: DadataSuggestion) {
+    this.inputValueFio.nativeElement.value = item.value;
+    this.inputValueFio.nativeElement.focus();
+    this.selectedSuggestionFio = item;
+    this.dataFio = [];
+    this.currentFocusFio = -1;
+    this.fio = item;
   }
 
   onEnter() {
@@ -58,7 +73,6 @@ export class TasksComponent implements OnInit {
     ).subscribe(x => {
       this.dataService.getData(x, DadataType.address).subscribe((y: DadataResponse) => {
         this.data = y.suggestions;
-        // console.log('ngOnInit - inputString ', this.inputString$);
       });
     });
   }
@@ -68,10 +82,8 @@ export class TasksComponent implements OnInit {
       debounce(() => timer(500)),
     ).subscribe(x => {
       this.dataService.getData(x, DadataType.fio).subscribe((y: DadataResponse) => {
-        this.data = y.suggestions;
-        // console.log('ngOnInit - inputString ', this.inputString$);
+        this.dataFio = y.suggestions;
       });
     });
   }
-  // [value]="address ? '' : address.data.city"
 }
