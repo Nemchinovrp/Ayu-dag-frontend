@@ -42,6 +42,9 @@
               <mat-form-field class="example-full-width">
                 <input matInput placeholder="Квартира" [disabled]="true" [value]="address?.data.flat">
               </mat-form-field>
+              <div>{{address?.data.geo_lon}}</div>
+              <p>Координаты</p>
+              <div>{{address?.data.geo_lat}}</div>
             </form>
           </div>
         </div>

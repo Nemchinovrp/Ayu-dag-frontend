@@ -1,9 +1,30 @@
-<h1>{{ title }}</h1>
+<p>Map</p>
 
-<mgl-map
-  [style]="'mapbox://styles/mapbox/streets-v9'"
-  [zoom]="[9]"
-  [center]="[-74.50, 40]"
->
-</mgl-map>
+
+
+<div class="container">
+  <div class="row justify-content-start">
+    <div class="col-4">
+      One of two columns
+    </div>
+    <div class="col-4">
+      <mgl-map
+        [style]="'mapbox://styles/mapbox/outdoors-v9'"
+        [zoom]="[17]"
+        [center]="[45.7740433, 54.4046534]"
+      >
+        <mgl-control mglFullscreen></mgl-control>
+      </mgl-map>
+    </div>
+    <div class="col-4">
+      One of three columns
+    </div>
+  </div>
+
+</div>
+
+<45.7740433
+Координаты
+
+54.4046534-->
 
