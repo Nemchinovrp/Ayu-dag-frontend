@@ -12,12 +12,12 @@ import {debounce} from 'rxjs/operators';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
-  private value: any = '';
-  private valueFio: any = '';
+  public value: any = '';
+  public valueFio: any = '';
   data: DadataSuggestion[] = [];
   dataFio: DadataSuggestion[] = [];
-  private address: DadataSuggestion = null;
-  private fio: DadataSuggestion = null;
+  public address: DadataSuggestion = null;
+  public fio: DadataSuggestion = null;
   currentFocus = -1;
   currentFocusFio = -1;
   @Output() selectedSuggestion: DadataSuggestion;
