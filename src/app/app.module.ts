@@ -95,7 +95,7 @@ import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
     MatChipsModule,
     MatButtonModule,
     NgxMapboxGLModule.withConfig({
-      accessToken: 'pk.eyJ1IjoibmVtY2hpbm92cnAiLCJhIjoiY2s0Y3BxN3hpMDdyYzNmbzF6aTBncWxrZSJ9.u1EodAFxMUhql8V9S2o_zw'
+      accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA'
     })
   ],
   providers: [  {provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check'}],

@@ -1,6 +1,5 @@
-import {DadataSuggestion} from './suggestion';
-import {DadataAddress} from './data';
+import {DadataAddressSuggestion} from './suggestion';
 
-export interface DadataResponse {
-  suggestions: DadataSuggestion[];
+export interface DadataAddressResponse {
+  suggestions: DadataAddressSuggestion[];
 }

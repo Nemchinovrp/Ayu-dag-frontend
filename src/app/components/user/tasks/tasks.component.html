@@ -31,6 +31,10 @@
               <mat-form-field class="example-full-width">
                 <input matInput placeholder="Улица" [disabled]="true" [value]="address?.data.street">
               </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Latitude" [disabled]="true" [value]="address?.data.geo_lat">
+              </mat-form-field>
             </form>
           </div>
           <div class="col-sm-6">
@@ -42,47 +46,9 @@
               <mat-form-field class="example-full-width">
                 <input matInput placeholder="Квартира" [disabled]="true" [value]="address?.data.flat">
               </mat-form-field>
-            </form>
-          </div>
-        </div>
-
-        <form class="example-form">
-          <div class="autocomplete">
-            <mat-form-field class="example-full-width">
-              <input matInput type="text" placeholder="Фамилия Имя Отчество" name="fio"  #inputValueFio
-                     (input)="getDataFio(inputValueFio.value)"
-                     (keyup.Enter)="onEnter()" [(ngModel)]="valueFio">
-            </mat-form-field>
-            <div *ngIf="dataFio.length">
-              <div class="autocomplete-items">
-                <div class="autocomplele-item" *ngFor="let item of dataFio; let i = index"
-                     (click)="onClickFio($event, item)" [id]="i+'item'">
-                  {{item.value}}
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
-        <div class="row">
-          <div class="col-sm-6">
-            <form class="example-form">
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Фамилия" [disabled]="true" [value]="fio?.data.surname">
-              </mat-form-field>
 
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Имя" [disabled]="true" [value]="fio?.data.name">
-              </mat-form-field>
-            </form>
-          </div>
-          <div class="col-sm-6">
-            <form class="example-form">
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Отчество" [disabled]="true" [value]="fio?.data.patronymic">
-              </mat-form-field>
-
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Пол" [disabled]="true" [value]="fio?.data.gender">
+                <input matInput placeholder="Longitude" [disabled]="true" [value]="address?.data.geo_lon">
               </mat-form-field>
             </form>
           </div>
