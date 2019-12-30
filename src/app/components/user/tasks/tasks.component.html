@@ -25,22 +25,22 @@
           <div class="col-sm-6">
             <form class="example-form">
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Город" [disabled]="true" value="Ялта">
+                <input matInput placeholder="Город" [disabled]="true" [value]="address?.data.city">
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Улица" [disabled]="true">
+                <input matInput placeholder="Улица" [disabled]="true" [value]="address?.data.street">
               </mat-form-field>
             </form>
           </div>
           <div class="col-sm-6">
             <form class="example-form">
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Дом" [disabled]="true">
+                <input matInput placeholder="Дом" [disabled]="true" [value]="address?.data.house">
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Квартира" [disabled]="true">
+                <input matInput placeholder="Квартира" [disabled]="true" [value]="address?.data.flat">
               </mat-form-field>
             </form>
           </div>
@@ -49,7 +49,7 @@
         <form class="example-form">
           <div class="autocomplete">
             <mat-form-field class="example-full-width">
-              <input matInput type="text" placeholder="Фамилия Имя Отчество" name="address"  #inputValue
+              <input matInput type="text" placeholder="Фамилия Имя Отчество" name="address"  #inputValueFio
                      (input)="getData(inputValue.value)"
                      (keyup.Enter)="onEnter()" [(ngModel)]="value">
             </mat-form-field>

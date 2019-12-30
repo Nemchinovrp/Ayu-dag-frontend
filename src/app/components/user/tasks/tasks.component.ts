@@ -14,11 +14,13 @@ import {debounce} from 'rxjs/operators';
 export class TasksComponent implements OnInit {
   private value: any = '';
   data: DadataSuggestion[] = [];
+  private address: DadataSuggestion = null;
   currentFocus = -1;
   @Output() selectedSuggestion: DadataSuggestion;
   // @ts-ignore
   @ViewChild('inputValue', {static: true}) inputValue: ElementRef;
   public inputString$ = new Subject<string>();
+  public inputStringFio$ = new Subject<string>();
 
   constructor(private dataService: DadataService) {
   }
@@ -26,6 +28,7 @@ export class TasksComponent implements OnInit {
   ngOnInit() {
     console.log('ngOnInit working');
     this.getAddress();
+    this.getFio();
   }
   getData(value: string) {
     console.log('getData Method - ', value);
@@ -40,7 +43,9 @@ export class TasksComponent implements OnInit {
     this.selectedSuggestion = item;
     this.data = [];
     this.currentFocus = -1;
-    console.log('onClick DadataSuggestion', item);
+    this.address = item;
+    console.log('OnClick - this.address', this.address);
+    // console.log('onClick DadataSuggestion', item);
   }
 
   onEnter() {
@@ -53,8 +58,20 @@ export class TasksComponent implements OnInit {
     ).subscribe(x => {
       this.dataService.getData(x, DadataType.address).subscribe((y: DadataResponse) => {
         this.data = y.suggestions;
-        console.log('ngOnInit - inputString ', this.inputString$);
+        // console.log('ngOnInit - inputString ', this.inputString$);
       });
     });
   }
+
+  private getFio() {
+    this.inputStringFio$.pipe(
+      debounce(() => timer(500)),
+    ).subscribe(x => {
+      this.dataService.getData(x, DadataType.fio).subscribe((y: DadataResponse) => {
+        this.data = y.suggestions;
+        // console.log('ngOnInit - inputString ', this.inputString$);
+      });
+    });
+  }
+  // [value]="address ? '' : address.data.city"
 }
