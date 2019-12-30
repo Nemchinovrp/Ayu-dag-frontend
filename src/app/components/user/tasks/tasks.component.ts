@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, Output, ViewChild} from '@angular/core';
 
-import {DadataService} from '../../../services/dadata.service';
+import {DadataService, DadataType} from '../../../services/dadata.service';
 import {DadataSuggestion} from '../../../model/dadata/suggestion';
 import {Subject, timer} from 'rxjs';
 import {DadataResponse} from '../../../model/dadata/dadata-response';
@@ -23,6 +23,10 @@ export class TasksComponent implements OnInit {
   constructor(private dataService: DadataService) {
   }
 
+  ngOnInit() {
+    console.log('ngOnInit working');
+    this.getAddress();
+  }
   getData(value: string) {
     console.log('getData Method - ', value);
     this.inputString$.next(value);
@@ -41,20 +45,13 @@ export class TasksComponent implements OnInit {
 
   onEnter() {
     console.log('onEnterMethod start');
-    this.selectedSuggestion = this.data[this.currentFocus];
-    console.log('onEnterMethod this.selectedSuggestion', this.selectedSuggestion);
-    console.log('onEnterMethod this.data[this.currentFocus]', this.data[this.currentFocus]);
-    this.inputValue.nativeElement.value = this.selectedSuggestion.value;
-    console.log('onEnterMethod this.inputValue.nativeElement.value', this.inputValue.nativeElement.value);
-    this.data = [];
-    this.currentFocus = -1;
   }
 
-  ngOnInit() {
+  private getAddress() {
     this.inputString$.pipe(
       debounce(() => timer(500)),
     ).subscribe(x => {
-      this.dataService.getData(x).subscribe((y: DadataResponse) => {
+      this.dataService.getData(x, DadataType.address).subscribe((y: DadataResponse) => {
         this.data = y.suggestions;
         console.log('ngOnInit - inputString ', this.inputString$);
       });
