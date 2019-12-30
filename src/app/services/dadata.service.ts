@@ -18,15 +18,8 @@ export enum DadataType {
 export class DadataService {
   // return this.http.get('http://localhost:8080/address?query='.concat(value));
   constructor(private http: HttpClient) { }
-
-/*  getData(value: string): Observable<DadataResponse> {
-
-    // @ts-ignore
-    return this.http.get('http://localhost:8080/address?query='.concat(value));
-  }*/
-
   // tslint:disable-next-line:max-line-length
-  getData(value: string, type: DadataType = DadataType.address, count: number = 10, locations: Locations[] = null): Observable<DadataResponse> {
+  getData(value: string, type: DadataType, count: number = 3, locations: Locations[] = null): Observable<DadataResponse> {
     const httpOptions = {
       headers: new HttpHeaders({
         Accept: 'application/json',

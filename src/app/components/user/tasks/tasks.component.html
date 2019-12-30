@@ -3,32 +3,90 @@
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
       <div [style.text-align]="'center'">
-
-      <!--  <form class="example-form">
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Введите адрес">
-          </mat-form-field>
-        </form>-->
-
-
-        <div class="autocomplete">
-          <input type="text" name="address" class="search" #inputValue (input)="getData(inputValue.value)"
-                 (keyup.ArrowDown)="onArrowDown()" (keyup.ArrowUp)="onArrowUp()"
-                 (keyup.Enter)="onEnter()" spellcheck="false" [(ngModel)]="value" autocomplete="new-password" />
-          <div *ngIf="data.length">
-            <div class="autocomplete-items">
-              <div class="autocomplele-item" *ngFor="let item of data; let i = index" (click)="onClick($event, item)" [id]="i+'item'">
-                {{item.value}}
-                <ng-template [ngIf]="type==='party'">
-                  <br/>
-                  <span>{{item.data?.inn}} {{config.partyAddress === 'full' ? item.data?.address?.value : item.data?.address?.data?.city}}</span>
-                </ng-template>
+        <form class="example-form">
+          <div class="autocomplete">
+            <mat-form-field class="example-full-width">
+              <input matInput type="text" placeholder="Город, улица, дом, квартира" name="address"  #inputValue
+                     (input)="getData(inputValue.value)"
+                     (keyup.Enter)="onEnter()" [(ngModel)]="value">
+            </mat-form-field>
+            <div *ngIf="data.length">
+              <div class="autocomplete-items">
+                <div class="autocomplele-item" *ngFor="let item of data; let i = index"
+                     (click)="onClick($event, item)" [id]="i+'item'">
+                  {{item.value}}
+                </div>
               </div>
             </div>
           </div>
+        </form>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <form class="example-form">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Город" [disabled]="true" [value]="address?.data.city">
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Улица" [disabled]="true" [value]="address?.data.street">
+              </mat-form-field>
+            </form>
+          </div>
+          <div class="col-sm-6">
+            <form class="example-form">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Дом" [disabled]="true" [value]="address?.data.house">
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Квартира" [disabled]="true" [value]="address?.data.flat">
+              </mat-form-field>
+            </form>
+          </div>
         </div>
 
+        <form class="example-form">
+          <div class="autocomplete">
+            <mat-form-field class="example-full-width">
+              <input matInput type="text" placeholder="Фамилия Имя Отчество" name="fio"  #inputValueFio
+                     (input)="getDataFio(inputValueFio.value)"
+                     (keyup.Enter)="onEnter()" [(ngModel)]="valueFio">
+            </mat-form-field>
+            <div *ngIf="dataFio.length">
+              <div class="autocomplete-items">
+                <div class="autocomplele-item" *ngFor="let item of dataFio; let i = index"
+                     (click)="onClickFio($event, item)" [id]="i+'item'">
+                  {{item.value}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="row">
+          <div class="col-sm-6">
+            <form class="example-form">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Фамилия" [disabled]="true" [value]="fio?.data.surname">
+              </mat-form-field>
 
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Имя" [disabled]="true" [value]="fio?.data.name">
+              </mat-form-field>
+            </form>
+          </div>
+          <div class="col-sm-6">
+            <form class="example-form">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Отчество" [disabled]="true" [value]="fio?.data.patronymic">
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Пол" [disabled]="true" [value]="fio?.data.gender">
+              </mat-form-field>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-sm-2"></div>
