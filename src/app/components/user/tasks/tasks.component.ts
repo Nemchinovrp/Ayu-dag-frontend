@@ -25,7 +25,6 @@ export class TasksComponent implements OnInit {
   public address: DadataAddressSuggestion = null;
   currentFocus = -1;
   @Output() selectedSuggestion: DadataAddressSuggestion;
-  @Output() selectedSuggestionFio: DadataAddressSuggestion;
   // @ts-ignore
   @ViewChild('inputValue', {static: true}) inputValue: ElementRef;
   public inputString$ = new Subject<string>();
