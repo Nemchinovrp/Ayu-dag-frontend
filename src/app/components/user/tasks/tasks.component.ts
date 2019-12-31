@@ -6,7 +6,6 @@ import {DadataAddressResponse} from '../../../model/dadata/dadata-response';
 import {debounce} from 'rxjs/operators';
 import {DadataAddressSuggestion} from '../../../model/dadata/suggestion';
 import { FileUploader } from 'ng2-file-upload';
-import {Headers} from 'ng2-file-upload/file-upload/file-uploader.class';
 
 // const URL = '/api/';
 const URL = 'http://localhost:8080/upload';
@@ -34,6 +33,8 @@ export class TasksComponent implements OnInit {
   constructor(private dataService: DadataService) {
     this.uploader = new FileUploader({
       url: URL,
+      maxFileSize: 1048576,
+      allowedMimeType: ['image/png', 'image/jpg', 'image/jpeg'],
     });
 
     this.hasBaseDropZoneOver = false;

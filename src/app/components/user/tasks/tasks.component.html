@@ -60,15 +60,9 @@
 </div>
 <div class="container">
 
-  <!--<div class="navbar navbar-default">
-    <div class="navbar-header">
-      <a class="navbar-brand" href>Angular2 File Upload</a>
-    </div>
-  </div>-->
-
   <div class="row">
     <div class="col-md-3">
-      <h3>Выбрать файлы</h3>
+      <h3>Выбрать файлы(размером не более 1мб/png,jpg,jpeg)</h3>
       <div ng2FileDrop
            [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
            (fileOver)="fileOverBase($event)"
@@ -76,14 +70,6 @@
            class="well my-drop-zone">
         Base drop zone
       </div>
-
-   <!--   <div ng2FileDrop
-           [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}"
-           (fileOver)="fileOverAnother($event)"
-           [uploader]="uploader"
-           class="well my-drop-zone">
-        Another drop zone
-      </div>-->
 
       Multiple
       <input type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
