@@ -15,6 +15,7 @@ import {environment} from '../../../../environments/environment';
 })
 export class TasksComponent implements OnInit {
   baseUrl = environment.baseUrl;
+  loadImages: Array<string> = [];
   uploader: FileUploader;
   hasBaseDropZoneOver: boolean;
   hasAnotherDropZoneOver: boolean;
@@ -40,7 +41,10 @@ export class TasksComponent implements OnInit {
 
     this.response = '';
 
-    this.uploader.response.subscribe(res => this.response = res);
+    this.uploader.response.subscribe(res => {
+      this.response = res;
+      this.loadImages.push(this.response);
+    });
   }
 
   ngOnInit() {
