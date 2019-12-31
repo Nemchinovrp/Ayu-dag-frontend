@@ -1,4 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import {DadataService} from '../../../services/dadata.service';
+import {UserService} from '../../../services/user.service';
+// @ts-ignore
+import {Hotel} from '../../../model/Hotel';
 
 export interface Food {
   value: string;
@@ -19,10 +23,18 @@ export class MainComponent implements OnInit {
   inputs: any;
 
 
-  constructor() {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit() {
+  }
+
+  myFunc() {
+    console.log('method in component');
+    this.userService.testBackend().subscribe((y : Hotel) => {
+      console.log('into method in component');
+      alert(y.name + y.description);
+    })
   }
 
   numberInput(evt, val) {

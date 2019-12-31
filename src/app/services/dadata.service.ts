@@ -12,9 +12,9 @@ export enum DadataType {
   providedIn: 'root'
 })
 export class DadataService {
-  // return this.http.get('http://localhost:8080/address?query='.concat(value));
+
   constructor(private http: HttpClient) { }
-  // tslint:disable-next-line:max-line-length
+
   getData(value: string, type: DadataType, count: number = 3, locations: Locations[] = null): Observable<DadataAddressResponse> {
     const httpOptions = {
       headers: new HttpHeaders({
