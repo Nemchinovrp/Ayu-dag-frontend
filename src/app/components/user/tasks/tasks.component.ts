@@ -5,6 +5,10 @@ import {Subject, timer} from 'rxjs';
 import {DadataAddressResponse} from '../../../model/dadata/dadata-response';
 import {debounce} from 'rxjs/operators';
 import {DadataAddressSuggestion} from '../../../model/dadata/suggestion';
+import { FileUploader } from 'ng2-file-upload';
+
+// const URL = '/api/';
+const URL = 'http://localhost:8080/upload';
 
 @Component({
   selector: 'app-tasks',
@@ -12,17 +16,32 @@ import {DadataAddressSuggestion} from '../../../model/dadata/suggestion';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
+  uploader:FileUploader;
+  hasBaseDropZoneOver:boolean;
+  hasAnotherDropZoneOver:boolean;
+  response:string;
   public value: any = '';
   public data: DadataAddressSuggestion[] = [];
   public address: DadataAddressSuggestion = null;
   currentFocus = -1;
   @Output() selectedSuggestion: DadataAddressSuggestion;
-  @Output() selectedSuggestionFio: DadataAddressSuggestion;
   // @ts-ignore
   @ViewChild('inputValue', {static: true}) inputValue: ElementRef;
   public inputString$ = new Subject<string>();
 
   constructor(private dataService: DadataService) {
+    this.uploader = new FileUploader({
+      url: URL,
+      maxFileSize: 1048576,
+      allowedMimeType: ['image/png', 'image/jpg', 'image/jpeg'],
+    });
+
+    this.hasBaseDropZoneOver = false;
+    this.hasAnotherDropZoneOver = false;
+
+    this.response = '';
+
+    this.uploader.response.subscribe( res => this.response = res );
   }
 
   ngOnInit() {
@@ -55,5 +74,13 @@ export class TasksComponent implements OnInit {
         this.data = y.suggestions;
       });
     });
+  }
+
+  public fileOverBase(e:any):void {
+    this.hasBaseDropZoneOver = e;
+  }
+
+  public fileOverAnother(e:any):void {
+    this.hasAnotherDropZoneOver = e;
   }
 }

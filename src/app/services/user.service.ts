@@ -8,6 +8,9 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {User} from '../model/user';
 import {Transaction} from '../model/transaction';
+// @ts-ignore
+import {Hotel} from '../model/Hotel';
+import { environment } from '../../environments/environment';
 
 let API_URL = 'http://localhost:8080/api/user/';
 
@@ -15,6 +18,7 @@ let API_URL = 'http://localhost:8080/api/user/';
   providedIn: 'root'
 })
 export class UserService {
+  baseUrl = environment.baseUrl;
   public currentUser: Observable<User>;
   private currentUserSubject: BehaviorSubject<User>;
 
@@ -62,6 +66,13 @@ export class UserService {
 
   purchaseProduct(transaction: Transaction): Observable<any> {
     return this.http.post(API_URL + 'purchase', JSON.stringify(transaction),
+      {headers: {'Content-Type': 'application/json; charset=UTF-8'}});
+  }
+
+  testBackend(): Observable<string> {
+    console.log("service - method");
+    // @ts-ignore
+    return this.http.get<Hotel>(this.baseUrl + '/test',
       {headers: {'Content-Type': 'application/json; charset=UTF-8'}});
   }
 }
