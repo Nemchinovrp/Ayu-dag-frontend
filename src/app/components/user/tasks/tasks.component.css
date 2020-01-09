@@ -20,3 +20,12 @@
 .another-file-over-class {
   border: dotted 3px green;
 }
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
