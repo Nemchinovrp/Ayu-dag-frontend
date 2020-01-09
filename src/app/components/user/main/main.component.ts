@@ -29,6 +29,14 @@ export class MainComponent implements OnInit {
   ngOnInit() {
   }
 
+  increment() {
+    console.log("increment");
+  }
+
+  decrement() {
+    console.log("decrement");
+  }
+
   myFunc() {
     console.log('method in component');
     this.userService.testBackend().subscribe((y : Hotel) => {
