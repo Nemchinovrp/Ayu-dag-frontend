@@ -25,31 +25,31 @@
           <div class="col-sm-6">
             <form class="example-form">
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Город" [disabled]="true" [value]="address?.data.city">
+                <input matInput placeholder="Город"  [readonly]="true" [value]="address?.data.city">
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Улица" [disabled]="true" [value]="address?.data.street">
+                <input matInput placeholder="Улица" [readonly]="true" [value]="address?.data.street">
               </mat-form-field>
 
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Latitude" [disabled]="true" [value]="address?.data.geo_lat">
-              </mat-form-field>
+             <!-- <mat-form-field class="example-full-width">
+                <input matInput placeholder="Latitude" [readonly]="true" [value]="address?.data.geo_lat">
+              </mat-form-field>-->
             </form>
           </div>
           <div class="col-sm-6">
             <form class="example-form">
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Дом" [disabled]="true" [value]="address?.data.house">
+                <input matInput placeholder="Дом" [readonly]="true" [value]="address?.data.house">
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Квартира" [disabled]="true" [value]="address?.data.flat">
+                <input matInput placeholder="Квартира" [readonly]="true" [value]="address?.data.flat">
               </mat-form-field>
 
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Longitude" [disabled]="true" [value]="address?.data.geo_lon">
-              </mat-form-field>
+             <!-- <mat-form-field class="example-full-width">
+                <input matInput placeholder="Longitude" [readonly]="true" [value]="address?.data.geo_lon">
+              </mat-form-field>-->
             </form>
           </div>
         </div>
@@ -82,14 +82,6 @@
               <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
             </td>
             <td nowrap>
-              <button type="button" class="btn btn-success btn-xs"
-                      (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
-                <span class="glyphicon glyphicon-upload"></span> Загрузить
-              </button>
-              <button type="button" class="btn btn-warning btn-xs"
-                      (click)="item.cancel()" [disabled]="!item.isUploading">
-                <span class="glyphicon glyphicon-ban-circle"></span> Отменить
-              </button>
               <button type="button" class="btn btn-danger btn-xs"
                       (click)="item.remove()">
                 <span class="glyphicon glyphicon-trash"></span> Удалить

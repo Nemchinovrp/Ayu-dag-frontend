@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {DadataService} from '../../../services/dadata.service';
 import {UserService} from '../../../services/user.service';
 // @ts-ignore
@@ -15,6 +15,8 @@ export interface Food {
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+  counterValue: Number = 0;
+
   foods: Food[] = [
     {value: 'steak-0', viewValue: 'Ялта'},
     {value: 'pizza-1', viewValue: 'Севастополь'},
@@ -27,6 +29,20 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  increment() {
+    console.log("increment");
+    // @ts-ignore
+    console.log(this.counterValue = ++this.counterValue);
+    console.log(this.counterValue);
+  }
+
+  decrement() {
+    console.log("decrement");
+    // @ts-ignore
+    console.log(this.counterValue = --this.counterValue);
+    console.log(this.counterValue);
   }
 
   myFunc() {
