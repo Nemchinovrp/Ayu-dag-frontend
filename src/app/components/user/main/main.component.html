@@ -24,7 +24,7 @@
             <mat-icon>remove</mat-icon>
           </button>
           <mat-form-field style="width:15px">
-            <input matInput value="0"  type="number" size="1" [(ngModel)]="counterValue" [ngModelOptions]="{standalone: true}">
+            <input matInput value="0" [readonly]="true"  type="number" size="1" [(ngModel)]="counterValue" [ngModelOptions]="{standalone: true}">
           </mat-form-field>
           <button mat-button (click)="increment()">
             <mat-icon>add</mat-icon>
