@@ -19,6 +19,8 @@ export class TasksComponent implements OnInit {
   uploader: FileUploader;
   hasBaseDropZoneOver: boolean;
   hasAnotherDropZoneOver: boolean;
+  nameHotel: string;
+  descriptionHotel: string;
   response: string;
   public value: any = '';
   public data: DadataAddressSuggestion[] = [];
@@ -67,6 +69,10 @@ export class TasksComponent implements OnInit {
 
   onEnter() {
     console.log('onEnterMethod start');
+  }
+
+  save() {
+    alert(this.nameHotel + ' - ' + this.descriptionHotel + ' - ' + this.address.data.fias_id);
   }
 
   private getAddress() {
