@@ -42,11 +42,11 @@ import { CategoriesComponent } from './components/user/categories/categories.com
 import { ViewTasksComponent } from './components/user/view-tasks/view-tasks.component';
 import { ChartComponent } from './components/user/chart/chart.component';
 import { MapsComponent } from './components/user/maps/maps.component';
-import {AgmCoreModule} from '@agm/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
 // import {MatButtonModule} from '@angular/material/button';
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
+import { HotelOwnerTemplateComponent } from './components/template/hotel-owner-template/hotel-owner-template.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +69,8 @@ import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
     CategoriesComponent,
     ViewTasksComponent,
     ChartComponent,
-    MapsComponent
+    MapsComponent,
+    HotelOwnerTemplateComponent
   ],
   imports: [
     BrowserModule,
