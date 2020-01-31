@@ -1,6 +1,5 @@
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
-
-  <mat-card class="box">
+<div class="container">
+  <div class="card card-container">
     <img class="profile-img-card" id="profile-img" src="//img.icons8.com/cotton/64/000000/gender-neutral-user--v3.png"/>
 
     <form #f="ngForm" (ngSubmit)="f.form.valid && login()" name="form-signin" novalidate>
@@ -20,5 +19,5 @@
       <button class="btn btn-lg btn-primary btn-block btn-signin form-submit-button" type="submit">Sign In</button>
     </form><!-- /form -->
     <a [routerLink]="['/register']" class="btn btn-link">Create New Account!</a>
-  </mat-card><!-- /card-container -->
+  </div><!-- /card-container -->
 </div><!-- /container -->
