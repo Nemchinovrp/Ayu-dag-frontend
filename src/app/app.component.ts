@@ -3,6 +3,7 @@ import {UserService} from './services/user.service';
 import {User} from './model/user';
 import {Role} from './model/role';
 import {Router, RoutesRecognized} from '@angular/router';
+import {Panel} from './model/Panel';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ import {Router, RoutesRecognized} from '@angular/router';
 export class AppComponent {
   currentUser: User;
   isAdminPanel: boolean = false;
+  panel: Panel;
 
   constructor(private userService: UserService, private router: Router) {
     this.userService.currentUser.subscribe(data => {
