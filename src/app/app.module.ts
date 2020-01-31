@@ -16,6 +16,7 @@ import {AdminTemplateComponent} from './components/template/admin-template/admin
 import {NotFoundComponent} from './components/error/not-found/not-found.component';
 import {UnathorizedComponent} from './components/error/unathorized/unathorized.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 import {
   MAT_CHECKBOX_CLICK_ACTION,
@@ -97,6 +98,7 @@ import { HotelOwnerTemplateComponent } from './components/template/hotel-owner-t
     MatChipsModule,
     MatButtonModule,
     FileUploadModule,
+    FlexLayoutModule,
     NgxMapboxGLModule.withConfig({
       accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA'
     })
