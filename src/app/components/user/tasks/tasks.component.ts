@@ -7,6 +7,7 @@ import {debounce} from 'rxjs/operators';
 import {DadataAddressSuggestion} from '../../../model/dadata/suggestion';
 import {FileUploader} from 'ng2-file-upload';
 import {environment} from '../../../../environments/environment';
+import {HotelService} from '../../../services/hotel.service';
 
 @Component({
   selector: 'app-tasks',
@@ -19,6 +20,8 @@ export class TasksComponent implements OnInit {
   uploader: FileUploader;
   hasBaseDropZoneOver: boolean;
   hasAnotherDropZoneOver: boolean;
+  nameHotel: string;
+  descriptionHotel: string;
   response: string;
   public value: any = '';
   public data: DadataAddressSuggestion[] = [];
@@ -29,7 +32,7 @@ export class TasksComponent implements OnInit {
   @ViewChild('inputValue', {static: true}) inputValue: ElementRef;
   public inputString$ = new Subject<string>();
 
-  constructor(private dataService: DadataService) {
+  constructor(private dataService: DadataService, private hotelService: HotelService) {
     this.uploader = new FileUploader({
       url: this.baseUrl.concat('/upload'),
       maxFileSize: 1048576,
@@ -66,6 +69,17 @@ export class TasksComponent implements OnInit {
 
   onEnter() {
     console.log('onEnterMethod start');
+  }
+
+  save() {
+    this.hotelService.saveHotel(this.nameHotel, this.descriptionHotel, this.address.data).subscribe(
+      response => {
+        console.log('response - ' + response);
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   private getAddress() {

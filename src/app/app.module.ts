@@ -16,6 +16,7 @@ import {AdminTemplateComponent} from './components/template/admin-template/admin
 import {NotFoundComponent} from './components/error/not-found/not-found.component';
 import {UnathorizedComponent} from './components/error/unathorized/unathorized.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 import {
   MAT_CHECKBOX_CLICK_ACTION,
@@ -42,11 +43,11 @@ import { CategoriesComponent } from './components/user/categories/categories.com
 import { ViewTasksComponent } from './components/user/view-tasks/view-tasks.component';
 import { ChartComponent } from './components/user/chart/chart.component';
 import { MapsComponent } from './components/user/maps/maps.component';
-import {AgmCoreModule} from '@agm/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
 // import {MatButtonModule} from '@angular/material/button';
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
+import { HotelOwnerTemplateComponent } from './components/template/hotel-owner-template/hotel-owner-template.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
     CategoriesComponent,
     ViewTasksComponent,
     ChartComponent,
-    MapsComponent
+    MapsComponent,
+    HotelOwnerTemplateComponent
   ],
   imports: [
     BrowserModule,
@@ -96,6 +98,7 @@ import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
     MatChipsModule,
     MatButtonModule,
     FileUploadModule,
+    FlexLayoutModule,
     NgxMapboxGLModule.withConfig({
       accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA'
     })
