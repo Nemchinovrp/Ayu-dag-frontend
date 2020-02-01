@@ -1,6 +1,6 @@
-<!--<div class="container">
+<div class="container">
   <div class="card card-container">
-    <img class="profile-img-card" id="profile-img" src="//img.icons8.com/cotton/64/000000/gender-neutral-user&#45;&#45;v3.png"/>
+    <img class="profile-img-card" id="profile-img" src="//img.icons8.com/cotton/64/000000/gender-neutral-user--v3.png"/>
 
     <form #f="ngForm" (ngSubmit)="f.form.valid && login()" name="form-signin" novalidate>
       <div *ngIf="errorMessage" class="alert alert-danger" role="alert">{{errorMessage}}</div>
@@ -17,30 +17,7 @@
         <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required.</div>
       </div>
       <button class="btn btn-lg btn-primary btn-block btn-signin form-submit-button" type="submit">Sign In</button>
-    </form>&lt;!&ndash; /form &ndash;&gt;
+    </form><!-- /form -->
     <a [routerLink]="['/register']" class="btn btn-link">Create New Account!</a>
-  </div>&lt;!&ndash; /card-container &ndash;&gt;
-</div>&lt;!&ndash; /container &ndash;&gt;-->
-
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
-
-  <mat-card class="box">
-    <mat-card-header>
-      <mat-card-title>Log in</mat-card-title>
-    </mat-card-header>
-
-    <form class="example-form">
-      <mat-card-content>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Username">
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Password">
-        </mat-form-field>
-      </mat-card-content>
-      <button mat-stroked-button color="accent" class="btn-block">Log in</button>
-    </form>
-  </mat-card>
-
-</div>
+  </div><!-- /card-container -->
+</div><!-- /container -->
