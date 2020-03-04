@@ -59,6 +59,11 @@ export class UserService {
       {headers: {'Content-Type': 'application/json; charset=UTF-8'}});
   }
 
+  registerHotelOwner(user: User): Observable<any> {
+    return this.http.post(API_URL + 'hotel_owner_registration', JSON.stringify(user),
+      {headers: {'Content-Type': 'application/json; charset=UTF-8'}});
+  }
+
   findAllProducts(): Observable<any> {
     return this.http.get(API_URL + 'products',
       {headers: {'Content-Type': 'application/json; charset=UTF-8'}});
