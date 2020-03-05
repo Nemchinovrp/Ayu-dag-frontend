@@ -23,12 +23,6 @@
 
 <nav class="navbar custom-vertical-nav navbar-dark bg-dark nav-pills nav-fill">
   <ul class="navbar-nav custom-navbar-nav">
-    <li class="nav-item">
-      <a class="navbar-brand" href="https://angular.io">
-        <span><img src="assets/imgs/angular.png"></span>
-        <span class="logo">ANGULAR</span>
-      </a>
-    </li>
     <li [class.active]="router.url==='/dashboard'" class="nav-item">
       <a class="nav-link" routerLink="/dashboard">
         <span class="glyphicon glyphicon-home"></span>
