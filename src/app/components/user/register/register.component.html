@@ -22,7 +22,7 @@
                name="password" required type="password"/>
         <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required.</div>
       </div>
-      <div><input type="checkbox" [(ngModel)]="isHotelOwner">Зарегистрироваться как владелец Отеля<Br></div>
+      <div><input type="checkbox" [(ngModel)]="isHotelOwner"  [ngModelOptions]="{standalone: true}">Зарегистрироваться как владелец Отеля<Br></div>
       <button class="btn btn-lg btn-primary btn-block btn-signin form-submit-button" type="submit">Sign Up</button>
     </form><!-- /form -->
     <a [routerLink]="['/login']" class="btn btn-link">I have Account!</a>
