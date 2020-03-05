@@ -47,7 +47,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
 // import {MatButtonModule} from '@angular/material/button';
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
-import { HotelOwnerTemplateComponent } from './components/template/hotel-owner-template/hotel-owner-template.component';
 
 @NgModule({
   declarations: [
@@ -70,8 +69,7 @@ import { HotelOwnerTemplateComponent } from './components/template/hotel-owner-t
     CategoriesComponent,
     ViewTasksComponent,
     ChartComponent,
-    MapsComponent,
-    HotelOwnerTemplateComponent
+    MapsComponent
   ],
   imports: [
     BrowserModule,
