@@ -18,6 +18,7 @@ let API_URL = 'http://localhost:8080/api/user/';
   providedIn: 'root'
 })
 export class UserService {
+  private url: String;
   baseUrl = environment.baseUrl;
   public currentUser: Observable<User>;
   private currentUserSubject: BehaviorSubject<User>;
@@ -54,8 +55,13 @@ export class UserService {
       }));
   }
 
-  register(user: User): Observable<any> {
-    return this.http.post(API_URL + 'registration', JSON.stringify(user),
+  register(user: User, hotelOwner: Boolean): Observable<any> {
+    if (!hotelOwner) {
+      this.url = 'registration';
+    } else {
+      this.url = 'hotel_owner_registration';
+    }
+    return this.http.post(API_URL + this.url, JSON.stringify(user),
       {headers: {'Content-Type': 'application/json; charset=UTF-8'}});
   }
 
