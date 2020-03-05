@@ -17,6 +17,7 @@ import {TasksComponent} from './components/user/tasks/tasks.component';
 import {MainComponent} from './components/user/main/main.component';
 import {ChartComponent} from './components/user/chart/chart.component';
 import {MapsComponent} from './components/user/maps/maps.component';
+import {HotelAdditionComponent} from './components/admin/hotel-addition/hotel-addition.component';
 
 const routes: Routes = [
   //Main page
@@ -46,6 +47,11 @@ const routes: Routes = [
     data: {roles: [Role.ADMIN]}
   },
   {
+    path: 'hotel-addition',
+    component: HotelAdditionComponent,
+    canActivate: [AuthGuard],
+    data: {roles: [Role.ADMIN]}
+  },{
     path: 'user-list',
     component: UserListComponent,
     canActivate: [AuthGuard],

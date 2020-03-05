@@ -47,6 +47,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
 // import {MatButtonModule} from '@angular/material/button';
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
+import { HotelAdditionComponent } from './components/admin/hotel-addition/hotel-addition.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
     CategoriesComponent,
     ViewTasksComponent,
     ChartComponent,
-    MapsComponent
+    MapsComponent,
+    HotelAdditionComponent
   ],
   imports: [
     BrowserModule,
