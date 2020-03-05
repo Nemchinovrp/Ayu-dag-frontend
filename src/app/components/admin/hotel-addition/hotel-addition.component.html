@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <div [style.text-align]="'center'">
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Название отеля" [(ngModel)]="nameHotel" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+
+        <form class="example-form">
+          <div class="autocomplete">
+            <mat-form-field class="example-full-width">
+              <input matInput type="text" placeholder="Город, улица, дом, квартира" name="address" #inputValue
+                     (input)="getData(inputValue.value)"
+                     (keyup.Enter)="onEnter()" [(ngModel)]="value">
+            </mat-form-field>
+            <div *ngIf="data.length">
+              <div class="autocomplete-items">
+                <div class="autocomplele-item" *ngFor="let item of data; let i = index"
+                     (click)="onClick($event, item)" [id]="i+'item'">
+                  {{item.value}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <form class="example-form">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Город"  [readonly]="true" [value]="address?.data.city">
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Улица" [readonly]="true" [value]="address?.data.street">
+              </mat-form-field>
+            </form>
+          </div>
+          <div class="col-sm-6">
+            <form class="example-form">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Дом" [readonly]="true" [value]="address?.data.house">
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Квартира" [readonly]="true" [value]="address?.data.flat">
+              </mat-form-field>
+            </form>
+          </div>
+        </div>
+
+
+        <div class="example-container">
+          <mat-form-field>
+            <textarea matInput placeholder="Описание отеля" [(ngModel)]="descriptionHotel" [ngModelOptions]="{standalone: true}"></textarea>
+          </mat-form-field>
+        </div>
+
+        <button type="button" class="btn btn-success"
+                (click)="save()" [disabled]="address?.data.fias_id === null && address?.data.geo_lat === null">
+          <span class="glyphicon glyphicon-ok"></span> Сохранить
+        </button>
+      </div>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+</div>
+
+
+
